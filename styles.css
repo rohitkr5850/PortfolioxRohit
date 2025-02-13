@@ -239,6 +239,9 @@ input:checked + div span.line-2 {
 }
 
 /* Hero Section */
+/* ... (Your existing CSS above this point) ... */
+
+/* Hero Section */
 .hero {
   width: 100%;
   padding-top: 100px;
@@ -307,12 +310,19 @@ input:checked + div span.line-2 {
 
 .details {
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: center; /* Keep this */
+  align-items: flex-start;  /* Important for larger screens */
   flex-direction: column;
   gap: 40px;
   width: 60%;
   height: 100%;
+
+    /* Center align on smaller screens */
+  @media (max-width: 700px) {
+    width: 100%;
+    align-items: center;   /*  Center on smaller screens */
+    text-align: center;  /*  Center text on smaller screens */
+  }
 }
 
 .intro {
@@ -334,17 +344,13 @@ input:checked + div span.line-2 {
 
 @media (max-width: 700px) {
   .hero-container {
-    flex-direction: column;
+    flex-direction: column;  /*  Stack vertically */
     gap: 20px;
   }
-  .details {
-    width: 100%;
-  }
+  /* .details { (Moved up for clarity) } */
   .home-image-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100%; /*  Take full width */
+    /*  display: flex; justify-content: center; align-items: center; (Already in the class definition) */
   }
 }
 
@@ -352,9 +358,14 @@ input:checked + div span.line-2 {
   border-radius: 12px;
   display: flex;
   gap: 20px;
-  justify-content: flex-start;
+  justify-content: flex-start; /*  Important for larger screens */
   text-decoration: none;
   color: rebeccapurple;
+
+    /* Center align on smaller screens */
+  @media (max-width: 700px) {
+      justify-content: center;  /* Center on smaller screens */
+  }
 }
 
 .social-icons a {
@@ -366,7 +377,8 @@ input:checked + div span.line-2 {
   box-shadow: 0 0 10px rebeccapurple;
 }
 
-/* About Section Starts */
+/* ... (Rest of your CSS) ... */
+/* --- About Section Starts --- */
 
 #about {
   max-width: 1266px;
@@ -376,17 +388,37 @@ input:checked + div span.line-2 {
   justify-content: center;
   gap: 10%;
   padding: 5%;
+   /* Ensure full width on smaller screens */
+    width: 100%; /* Add this for smaller screens */
+    @media (max-width: 700px) {
+      flex-direction: column; /* Stack elements vertically */
+        gap: 40px;
+    }
 }
 
 .about-container {
   display: flex;
   flex-direction: column;
   gap: 10px;
+   /* Center-align text on smaller screens */
+    @media (max-width: 700px) {
+      width: 90%;
+        text-align: center;  /* Center text */
+    }
+    @media (max-width: 400px) {
+      h2{
+        font-size: 20px;
+        line-height: 20px;
+      }
+      p{
+        font-size: 13px;
+      }
+    }
 }
 
 .about-container h1 {
   font-size: 60px;
-  text-align: center;
+  text-align: center; /*  Always centered */
   font-weight: 500;
   margin-bottom: 20px;
   color: rebeccapurple;
@@ -410,6 +442,15 @@ input:checked + div span.line-2 {
   line-height: 27px;
 }
 
+.profile-container {
+   /* Center-align image on smaller screens */
+    @media (max-width: 700px) {
+        width: 100%; /* Full width on smaller screens*/
+        display: flex;
+        justify-content: center;
+    }
+}
+
 .profile-container img {
   border: 1px solid #272735;
   width: 280px;
@@ -417,30 +458,7 @@ input:checked + div span.line-2 {
   border-radius: 30%;
 }
 
-@media (max-width: 700px) {
-  #about {
-    flex-direction: column;
-    gap: 40px;
-  }
-  .profile-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-  .about-container {
-    width: 90%;
-  }
-}
-
-@media (max-width: 400px) {
-  .about-container h2 {
-    font-size: 20px;
-    line-height: 20px;
-  }
-  .about-container p {
-    font-size: 13px;
-  }
-}
+/* (Media query for #about moved up for better organization) */
 
 .resumeContainer {
   margin-top: 20px;
@@ -449,7 +467,11 @@ input:checked + div span.line-2 {
   border-radius: 5px;
   border: 1px solid #0c0c1d;
   transition: background-color 0.3s ease, color 0.3s ease;
+    /* Center align for small device */
+    margin-left: auto;
+    margin-right: auto;
 }
+
 .resumeContainer:hover {
   background-color: #272735;
   color: rebeccapurple;
@@ -471,13 +493,12 @@ input:checked + div span.line-2 {
   font-size: 1rem;
 }
 
-/* About Section ends */
 
-/* Skills Section Starts */
+/* --- Skills Section Starts --- */
 
 .titleContainer {
   font-size: 60px;
-  text-align: center;
+  text-align: center;  /* Always centered */
   font-weight: 500;
   margin-bottom: 20px;
   color: rebeccapurple;
@@ -488,12 +509,14 @@ input:checked + div span.line-2 {
   padding: 3% 1%;
   max-width: 1266px;
   margin: auto;
+   /* Ensure full width and centered content on smaller screens */
+    width: 100%; /* for small device */
 }
 
 .tech-stack-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: center; /*  Always centered */
   align-items: center;
   gap: 20px;
 }
@@ -509,6 +532,15 @@ input:checked + div span.line-2 {
   border-radius: 5px;
   border: 1px solid #272735;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+
+    @media (max-width: 500px) {
+        width: 100px;
+        padding: 10px;
+        img{
+          width: 30px;
+          height: 30px;
+        }
+    }
 }
 
 .tech-stack-item:hover {
@@ -528,99 +560,83 @@ input:checked + div span.line-2 {
   text-align: center;
 }
 
-@media (max-width: 500px) {
-  .tech-stack-item {
-    width: 100px;
-    padding: 10px;
-  }
-  .tech-stack-item img {
-    width: 30px;
-    height: 30px;
-  }
-}
+/*(Media query for .tech-stack-item is already optimal)*/
 
-/* Skills Section Ends */
-
-/* Project Section Starts */
-
+/* --- Project Section Starts --- */
 #project {
-  padding: 3%;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-#project h1 {
-  font-size: 60px;
-  text-align: center;
-  font-weight: 500;
-  margin-bottom: 10px;
-  color: rebeccapurple;
-  font-family: "Patrick Hand", cursive;
-}
-
-.project-container {
-  display: flex;
-  align-items: center;
-  max-width: 1266px;
-  justify-content: center;
-  margin: auto;
-  width: 100%;
-  padding: 20px;
-  border: 1px solid #272735;
-  border-radius: 5px;
-}
-
-@media (max-width: 850px) {
-  .project-container {
+    padding: 3%;
+    display: flex;
     flex-direction: column;
+    gap: 20px;
+    align-items: center; /* Center align for small device */
+    h1 {
+      font-size: 60px;
+      text-align: center;
+      font-weight: 500;
+      margin-bottom: 10px;
+      color: rebeccapurple;
+      font-family: "Patrick Hand", cursive;
+    }
+}
+.project-container {
+    display: flex;
+    align-items: center;
+    max-width: 1266px;
+    justify-content: center;
+    margin: auto;
     width: 100%;
     padding: 20px;
-    border-radius: 0;
-  }
-}
+    border: 1px solid #272735;
+    border-radius: 5px;
+    @media (max-width: 850px) {
+       flex-direction: column;
+       width: 100%;
+       padding: 20px;
+       border-radius: 0;
 
+    }
+}
 .image-container {
   flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
 .laptop-image {
-  max-width: 90%;
-  height: auto;
-  border: 1px solid #272735;
-  border-radius: 5px;
-  transition: all 0.3s ease;
+    max-width: 90%;
+    height: auto;
+    border: 1px solid #272735;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    &:hover{
+      opacity: 0.8;
+      box-shadow: 0 0 20px rebeccapurple;
+    /* filter: brightness(0.7) sepia(1); */
+    }
 }
-
-.laptop-image:hover {
-  opacity: 0.8;
-  box-shadow: 0 0 20px rebeccapurple;
-  /* filter: brightness(0.7) sepia(1); */
-}
-
 .content-container {
   flex: 1;
   padding-left: 30px;
-}
-
-.content-container h2 {
-  font-size: 36px;
-  margin-bottom: 20px;
-}
-
-.content-container p {
-  font-size: 18px;
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-@media (max-width: 400px) {
-  .content-container h2 {
-    font-size: 26px;
+   /* Center-align text on smaller screens */
+  @media (max-width: 768px) {
+      padding-left: 0;
+      margin-top: 20px;
+      text-align: center; /* for small device */
   }
-
-  .content-container p {
-    font-size: 15px;
+  h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+      @media (max-width: 400px) {
+        font-size: 26px;
+      }
+  }
+  p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+      @media (max-width: 400px) {
+        font-size: 15px;
+      }
   }
 }
 
@@ -628,89 +644,87 @@ input:checked + div span.line-2 {
   display: flex;
   gap: 15px;
   margin-bottom: 20px;
-}
+  /* Center-align on smaller screens */
+    @media (max-width: 768px) {
+         justify-content: center; /* for small devices */
 
-.tech-icons span {
-  background-color: transparent;
-  border: 1px solid #272735;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 14px;
-  transition: all ease-in-out 0.2s;
-  cursor: pointer;
+    }
+  span {
+    background-color: transparent;
+    border: 1px solid #272735;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: all ease-in-out 0.2s;
+    cursor: pointer;
+      &:hover{
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+  }
 }
-
-.tech-icons span:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
 .team-avatars {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
-}
-
-.team-avatars img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 2px solid #fff;
+  /* Center-align on smaller screens */
+    @media (max-width: 768px) {
+         justify-content: center; /* for small devices */
+           img{
+            width: 50px;
+            height: 50px;
+           }
+    }
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+  }
 }
 
 .social-links {
-  display: flex;
-  gap: 15px;
-}
-
-.social-links img {
-  width: 25px;
-  height: 25px;
-  cursor: pointer;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .content-container {
-    padding-left: 0;
-    margin-top: 20px;
-  }
-
-  .team-avatars img {
-    width: 50px;
-    height: 50px;
-  }
+    display: flex;
+    gap: 15px;
+    justify-content: center; /* Center align for small device */
+    img {
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
+    }
 }
 
 /* Project Section Ends */
 
-/* GithubStats section Starts */
+
+
+/* --- GithubStats section Starts --- */
 
 #Statisticscon {
   max-width: 1266px;
   margin: auto;
   padding: 3%;
-}
-
-@media (max-width: 400px) {
-  #Statisticscon {
-    padding: 10px;
-  }
+   /* Ensure full width and centered content */
+    width: 100%; /* for small devices */
+    @media (max-width: 400px) {
+        padding: 10px;
+    }
 }
 
 #splideimg {
-  width: 700px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
+    width: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    @media (max-width: 900px){
+        width: 500px;
+    }
+    @media (max-width: 500px) {
+        width: 290px;
 
+    }
+
+}
 .splide__slide {
   display: flex;
   justify-content: center;
@@ -718,27 +732,19 @@ input:checked + div span.line-2 {
   padding: 20px;
 }
 
-@media (max-width: 900px) {
-  .img-container > img {
+
+.img-container > img {
+  @media (max-width: 900px){
     width: 400px;
   }
-  #splideimg {
-    width: 500px;
-  }
-  .nav-links > a,
-  .resume-btn {
-    display: none;
+  @media (max-width: 500px) {
+      width: 250px;
   }
 }
 
-@media (max-width: 500px) {
-  .img-container > img {
-    width: 250px;
-  }
-  #splideimg {
-    width: 290px;
-  }
-  .links > a {
+
+.links > a {
+  @media (max-width: 500px){
     display: none;
   }
 }
@@ -750,11 +756,16 @@ input:checked + div span.line-2 {
   flex-direction: column;
   justify-content: center;
   gap: 20px;
+   /* Ensure full width on smaller screens */
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    padding: 20px;
+  }
 }
 
 .mid-text h2 {
   font-size: 60px;
-  text-align: center;
+  text-align: center; /*  Always centered */
   font-weight: 500;
   margin-bottom: 20px;
   color: rebeccapurple;
@@ -779,16 +790,11 @@ input:checked + div span.line-2 {
   object-fit: contain;
 }
 
-@media screen and (max-width: 768px) {
-  #Statistics {
-    width: 100%;
-    padding: 20px;
-  }
-}
-
 /* GithubStats section Ends */
 
-/* Contact Section Starts */
+
+
+/* --- Contact Section Starts --- */
 
 .contact {
   max-width: 1266px;
@@ -798,73 +804,62 @@ input:checked + div span.line-2 {
   align-items: center;
   gap: 50px;
   padding: 5%;
+   /* Ensure full width on smaller screens */
+    width: 100%;  /* Full width for smaller screens */
+
+     /* Responsive Styles */
+    @media (max-width: 768px) {
+        flex-direction: column; /* Stack elements vertically */
+        gap: 30px;
+        width: 100%;
+        padding: 2%;
+        margin-bottom: 20px;
+    }
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .contact {
-    flex-direction: column;
-    gap: 30px;
-    width: 100%;
-    padding: 2%;
-  }
-}
 
 .textContainer {
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 40px;
-}
-
-@media (max-width: 768px) {
-  .contact {
-    margin-bottom: 20px;
-  }
-  .textContainer {
-    flex: 0;
+   /* Center-align text on smaller screens */
+  @media (max-width: 768px) {
+    flex: 0; /* Allow shrinking*/
     gap: 15px;
+    width: 80%; /* Control width */
+    text-align: center; /* Center the text*/
+      h1{
+      font-size: 36px;
+      text-align: center; /*  Center on smaller screens */
+      line-height: 1em;
+    }
+    h1{
+      text-align: start; /* for small screen */
+    }
   }
 
-  .textContainer h1 {
-    font-size: 36px;
-    text-align: center;
-    line-height: 1em;
+   h1 {
+    font-size: 80px;
+    line-height: 0.9em;
+    @media (max-width: 990px) {
+      font-size: 40px;
+    }
   }
-
-}
-
-.textContainer h1 {
-  font-size: 80px;
-  line-height: 0.9em;
-}
-
-@media (max-width: 990px) {
-  .textContainer h1 {
-    font-size: 40px;
+  span {
+    font-weight: 300;
   }
-}
-
-.textContainer span {
-  font-weight: 300;
 }
 
 .formContainer {
   flex: 1;
-}
-
-@media (max-width: 768px) {
-  .formContainer {
+  @media (max-width: 768px) {
     width: 80%;
     /* height: fit-content; */
   }
-  .textContainer h1 {
-    text-align: start;
-  }
-  .textContainer {
-    width: 80%;
-  }
 }
+
+
 
 form {
   display: flex;
@@ -889,37 +884,47 @@ button {
   font-weight: 600;
   border-radius: 5px;
   transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #272735;
-  color: rebeccapurple;
+    &:hover{
+      background-color: #272735;
+      color: rebeccapurple;
+    }
 }
 
 .message {
-  font-size: 1rem;
-  display: none;
+    font-size: 1rem;
+    display: none;
 }
 
 /* Contact Section Ends */
 
-/* Responsiveness */
+
+
+/* --- Responsiveness (Consolidated) --- */
 @media (max-width: 900px) {
-  .mid-text h2 {
-    font-size: 30px;
-  }
-  .titleContainer {
-    font-size: 30px;
-  }
-  #project h1 {
-    font-size: 30px;
-  }
+  .mid-text h2,
+  .titleContainer,
+  #project h1,
   .about-container h1 {
     font-size: 30px;
   }
+      /* Add more styles here to ensure ALL sections are centered */
+    #Statisticscon,  /* Make sure section containers are full-width */
+    #project,
+    #skills,
+    #about
+     {
+      width: 100%;
+      text-align: center; /* Center text content */
+  }
+  .nav-links > a,
+  .resume-btn {
+    display: none;
+  }
+
 }
 
-/* noise noise noise noisenoisenoisenoise    */
+
+/* --- Noise Effect --- */
 
 .noise {
   position: fixed;
@@ -930,6 +935,7 @@ button:hover {
   pointer-events: none;
   z-index: 999999;
   opacity: 0.05;
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAYAAAB5fY51AAAACXBIWXMAAAsTAAALEwEAmpwYAAAC3klEQVR4nO3dMW6iUBSEYd5JJUCCi8sIIoJ4yR0glhBCgBDCCuFhL5J4gZBAAglxYQUgE8X1/f/N7D0hGRlJ726qer4DAAAAAAAAAAAAAAAAAMDf6zI1AAAAAACgY4EHJgAAAACAVZk4MAAAAACwJhkHMwAAAAAArMlBAAAAAABgyTIPAADQp3kQAAAAAAAAaNKDBwAAAAAArMlBAAAAAABgyTIPAADQp3kQAAAAAAAAaNKDBwAAAAAArMlBAAAAAABgyTIPAADQp3kQAAAAAAAAaNKDBwAAAAAArMlBAAAAAABgyTIPAADQp3kQAAAAAAAAaNKDBwAAAAAArMlBAAAAAABgyTIPAADQp3kQAAAAAAAAaNKDBwAAAAAArMlBAAAAAABgyTIPAADQp3kQAAAAAAAAaNKDBwAAAAAArMlBAAAAAABgyTIPAADQp3kQAAAAAAAAaNKDBwAAAAAArMlBAAAAAABgyTIPAADQp3kQAAAAAAAAaNKDBwAAAAAArMlBAAAAAABgyTIPAADQp3kQAAAAAAAAaNKDBwAAAAAArMlBAAAAAABgyTIPAADQp3kQAAAAAAAAaNKDBwAAAAAArMlBAAAAAABgyTIPAADQp3kQAAAAAAAAaNKDBwAAAAAArMlBAAAAAABgyTIPAADQp3kQAAAAAAAAaNKDBwAAAAAArMlBAAAAAABgyTIPAADQp3kQAAAAAAAAaNKDBwAAAAAArMlBAAAAAABgyTIPAADQp3kQAAAAAAAAaNKDBwAAAAAArMlBAAAAAABgyTIPAADQp3kQAAAAAAAAaNKDBwAAAAAArMlBAAAAAABgyTIPAADQp3kQAAAAAAAAaNKDBwAAAAAArMlBAAAAAABgyTIPAADQp3kQAAAAAAAAaNKDBwAAAAAArMlBAAAAAABgyTIPAADQp3kQAAAAAAAAaNKDBwAAAAAArMlBAAAAAABgyTIPAADQp3kQAAAAAAAAaNKDBwAAAAAArMlBAAAAAABgyTIPAADQp3kQAAAAAAAAaNKDBwAAAAAArMlBAAAAAABgyTIPAADQp3kQAAAAAAAAaNKDBwAAAAAArMlBAAAAAABgyTIPAADQp/eGpwAAAAAAgC8H4CUCAAAAAOD/B145hB0MAAAAAElFTkSuQmCC"); /*  Replace with your noise image (base64 or URL) */
 }
 
 @keyframes noise-animation {
@@ -938,7 +944,7 @@ button:hover {
   }
 
   100% {
-    background-position: 500px 500px;
+    background-position: 500px 500px; /* Adjust values as needed */
   }
 }
 
