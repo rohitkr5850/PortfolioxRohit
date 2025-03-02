@@ -31,13 +31,12 @@
               <a href="#Statisticscon">Github Stats</a>
               <a href="#contact">Contact</a>
               <div>
-                <!-- <a href="" class="resume-btn">Resume</a> -->
-                <!-- href="assets/VikramKumarChoudhary-FullStackWebDeveloper-Resume.pdf" target="_blank" class="btn2"
-                onclick="downloadFile(event)" -->
+                <!-- Modified Resume Button with download attribute -->
                 <a
                   href="res/RohitxResume.pdf"
                   target="_blank"
                   class="resume-btn"
+                  download="Rohit_Kumar_Resume.pdf"
                   >Resume</a
                 >
               </div>
@@ -63,10 +62,12 @@
               <a href="#project" class="nav-link projects">Projects</a>
               <a href="#Statistics" class="nav-link projects">Github Stats</a>
               <a href="#contact" class="nav-link">Contact</a>
+              <!-- Modified Resume Button with download attribute -->
               <a
                 href="res/RohitxResume.pdf"
                 target="_blank"
                 class="resume nav-link"
+                download="Rohit_Kumar_Resume.pdf"
                 >Resume</a
               >
             </aside>
@@ -132,10 +133,12 @@
             experience in Coding and developing real-world Web Applications.
           </p>
           <div class="resumeContainer">
+            <!-- Modified Resume Button with download attribute -->
             <a
               href="res/RohitxResume.pdf"
               target="_blank"
               class="resume-btn"
+              download="Rohit_Kumar_Resume.pdf"
               >Resume</a
             >
           </div>
@@ -358,7 +361,7 @@
 
       <div class="contact" id="contact">
         <div class="textContainer">
-          <h1>Let’s work together</h1>
+          <h1>Let's work together</h1>
           <div class="item">
             <h2>Mail</h2>
             <span>rroy854100@gmail.com</span>
@@ -404,6 +407,33 @@
     </section>
 
     <script>
+     document.addEventListener('DOMContentLoaded', function() {
+  // Get all resume buttons
+  const resumeButtons = document.querySelectorAll('a[href="res/RohitxResume.pdf"]');
+  
+  // Add click event listener to each resume button
+  resumeButtons.forEach(button => {
+    button.addEventListener('click', function(event) {
+      // Prevent the default behavior (which would either download or open in new tab)
+      event.preventDefault();
+      
+      // Create a link for downloading
+      const downloadLink = document.createElement('a');
+      downloadLink.href = this.href;
+      downloadLink.download = "Rohit_Kumar_Resume.pdf";
+      downloadLink.style.display = 'none';
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+      
+      // Open in new tab as well
+      window.open(this.href, '_blank');
+      
+      console.log('Resume download initiated and opened in new tab');
+    });
+  });
+});
+
       var splide = new Splide(".splide");
       var bar = splide.root.querySelector(".my-carousel-progress-bar");
       splide.on("mounted move", function () {
